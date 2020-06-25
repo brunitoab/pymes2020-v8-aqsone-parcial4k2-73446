@@ -22,4 +22,10 @@ export class PresupuestoService {
   get() {
     return this.httpClient.get(this.resourceUrl);
   }
+  post(obj:Presupuesto) {
+    return this.httpClient.post(this.resourceUrl, obj);
+  }
+  put(Id: number, obj:Presupuesto) {
+    return this.httpClient.put(this.resourceUrl + Id, obj);
+  }
 }

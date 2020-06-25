@@ -1,12 +1,17 @@
-<div class="container">
+<div *ngIf="AccionABMC == 'L'">
+
+<button type="button" class="btn btn-primary" (click)="Agregar()">
+            <span class="fas fa-plus"> </span> 
+            Agregar
+</button>
 <h3>{{Presupuestos}}</h3>
 <div>
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-            <th class="text-center">IdPresupuesto</th>
-            <th class="text-center">PresupuestoDescripcion</th>
-            <th class="text-center">PresupuestoImporte</th>
+            <th class="text-center">Id Presupuesto</th>
+            <th class="text-center">Presupuesto Descripcion</th>
+            <th class="text-center">Presupuesto Importe</th>
         </tr>
       </thead>
       <tbody>
@@ -19,3 +24,61 @@
     </table>
 </div>
 </div>
+
+<!------------------------------->
+
+<form name="FormReg" [formGroup]='FormReg' *ngIf="AccionABMC != 'L'" class="bg-light">
+
+		<!--campo Razon Social-->
+		<div class="form-group row">
+			<label class="col-form-label col-sm-2 col-sm-offset-2" for="PresupuestoDescripcion">Presupuesto Descripcion <span
+                    class="text-danger">*</span></label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" formControlName="PresupuestoDescripcion" 
+         [ngClass]="{'is-invalid': (FormReg.controls.PresupuestoDescripcion.touched || submitted)  
+            && FormReg.controls.PresupuestoDescripcion.errors}" />
+
+				<span class="text-danger" *ngIf="(FormReg.controls.PresupuestoDescripcion.touched || submitted ) 
+                        && FormReg.controls.PresupuestoDescripcion.errors?.required">
+                    Dato requerido.
+                </span>
+                <span class="text-danger" *ngIf="(FormReg.controls.PresupuestoDescripcion.touched || submitted ) 
+                       && (FormReg.controls.PresupuestoDescripcion.errors?.minlength || FormReg.controls.PresupuestoDescripcion.errors?.maxlength) ">
+                    Dato texto, 4 a 55 caracteres.
+                </span>
+                
+			</div>
+		</div>
+
+    <!--campo Cantidad de empleados-->
+
+		<div class="form-group row">
+			<label class="col-form-label col-sm-2 col-sm-offset-2" for="PresupuestoImporte">
+                Presupuesto Importe <span class="text-danger">*</span>
+            </label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" formControlName="PresupuestoImporte"
+        [ngClass]="{'is-invalid': (FormReg.controls.PresupuestoImporte.touched || submitted)  
+            && FormReg.controls.PresupuestoImporte.errors}" />
+				<span class="text-danger" *ngIf="(FormReg.controls.PresupuestoImporte.touched || submitted ) 
+                        && FormReg.controls.PresupuestoImporte.errors?.required">
+                    Dato requerido.
+                </span>
+				<span class="text-danger" *ngIf="(FormReg.controls.PresupuestoImporte.touched || submitted ) 
+                        && FormReg.controls.PresupuestoImporte.errors?.pattern">
+                    Dato numérico, 1 a 7 dígitos.
+                </span>
+			</div>
+		</div>
+		
+    <div class="row justify-content-center">
+		<button type="button" class="btn btn-primary" (click)="Grabar()">
+            <span class="fas fa-check"></span> Grabar
+        </button>
+		&nbsp;
+		<button type="button" class="btn btn-warning" (click)="Cancelar()">
+            <span class="fas fa-undo"></span> Cancelar
+        </button>
+	</div>
+
+</form>
