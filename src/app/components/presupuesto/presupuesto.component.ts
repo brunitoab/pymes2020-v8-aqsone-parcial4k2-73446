@@ -1,29 +1,29 @@
 import { Component, OnInit } from "@angular/core";
-import { ArticuloFamilia } from "../../models/articulo-familia";
+import { Presupuesto } from "../../models/presupuesto";
 import { MockArticulosFamiliasService } from "../../services/mock-articulos-familias.service";
-import { ArticulosFamiliasService } from "../../services/articulos-familias.service";
+import { PresupuestoService } from "../../services/presupuesto.service";
  
 @Component({
-  selector: "app-articulos-familias",
-  templateUrl: "./articulos-familias.component.html",
-  styleUrls: ["./articulos-familias.component.css"]
+  selector: "app-presupuesto",
+  templateUrl: "./presupuesto.component.html",
+  styleUrls: ["./presupuesto.component.css"]
 })
-export class ArticulosFamiliasComponent implements OnInit {
-  Titulo = "Articulos Familias";
-  Items: ArticuloFamilia[] = [];
+export class PresupuestoComponent implements OnInit {
+  Titulo = "Presupuesto";
+  Items: Presupuesto[] = [];
  
   constructor(
-    private articulosFamiliasService:  ArticulosFamiliasService
+    private presupuestoService:  PresupuestoService
     //private articulosFamiliasService:  MockArticulosFamiliasService
   ){}
  
   ngOnInit() {
-    this.GetFamiliasArticulos();
+    this.GetPresupuesto();
   }
  
-  GetFamiliasArticulos() {
-    this.articulosFamiliasService.get()
-    .subscribe((res:ArticuloFamilia[]) => {
+  GetPresupuesto() {
+    this.presupuestoService.get()
+    .subscribe((res:Presupuesto[]) => {
       this.Items = res;
     });
   }

@@ -9,7 +9,8 @@ import { of } from "rxjs";
 import { Presupuesto } from "../models/presupuesto";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
+
 })
 export class PresupuestoService {
   resourceUrl: string;
