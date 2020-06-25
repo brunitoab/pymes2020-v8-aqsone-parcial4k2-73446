@@ -1,0 +1,21 @@
+<div class="container">
+<h3>{{Presupuestos}}</h3>
+<div>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+            <th class="text-center">IdPresupuesto</th>
+            <th class="text-center">PresupuestoDescripcion</th>
+            <th class="text-center">PresupuestoImporte</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of Items">
+            <td>{{item.IdPresupuesto}}</td>
+            <td>{{item.PresupuestoDescripcion | uppercase}}</td>
+            <td>{{item.PresupuestoImporte | uppercase}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+</div>
